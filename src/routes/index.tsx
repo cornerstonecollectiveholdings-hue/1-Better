@@ -155,12 +155,20 @@ function Home() {
         <a href="/" className="flex items-center gap-2 no-underline">
           <img src="/logo.png" alt="1% Better" className="h-10 w-auto" />
         </a>
-        <a
-          href="#waitlist"
-          className="inline-flex items-center px-5 py-2.5 rounded-full bg-brand-terracotta text-white text-sm font-medium hover:bg-brand-terracotta/90 transition-colors"
-        >
-          Join the Waitlist
-        </a>
+        <nav className="flex items-center gap-6">
+          <a
+            href="/boxes"
+            className="text-sm font-medium text-brand-stone hover:text-brand-charcoal transition-colors"
+          >
+            The Boxes
+          </a>
+          <a
+            href="#waitlist"
+            className="inline-flex items-center px-5 py-2.5 rounded-full bg-brand-terracotta text-white text-sm font-medium hover:bg-brand-terracotta/90 transition-colors"
+          >
+            Join the Waitlist
+          </a>
+        </nav>
       </header>
 
       <main id="main">
