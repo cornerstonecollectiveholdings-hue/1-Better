@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as BoxesRouteImport } from './routes/boxes'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminWaitlistRouteImport } from './routes/admin/waitlist'
+import { Route as AdminEmailsSentRouteImport } from './routes/admin/emails-sent'
 
 const BoxesRoute = BoxesRouteImport.update({
   id: '/boxes',
@@ -22,31 +24,49 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminWaitlistRoute = AdminWaitlistRouteImport.update({
+  id: '/admin/waitlist',
+  path: '/admin/waitlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminEmailsSentRoute = AdminEmailsSentRouteImport.update({
+  id: '/admin/emails-sent',
+  path: '/admin/emails-sent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/boxes': typeof BoxesRoute
+  '/admin/emails-sent': typeof AdminEmailsSentRoute
+  '/admin/waitlist': typeof AdminWaitlistRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/boxes': typeof BoxesRoute
+  '/admin/emails-sent': typeof AdminEmailsSentRoute
+  '/admin/waitlist': typeof AdminWaitlistRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/boxes': typeof BoxesRoute
+  '/admin/emails-sent': typeof AdminEmailsSentRoute
+  '/admin/waitlist': typeof AdminWaitlistRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boxes'
+  fullPaths: '/' | '/boxes' | '/admin/emails-sent' | '/admin/waitlist'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boxes'
-  id: '__root__' | '/' | '/boxes'
+  to: '/' | '/boxes' | '/admin/emails-sent' | '/admin/waitlist'
+  id: '__root__' | '/' | '/boxes' | '/admin/emails-sent' | '/admin/waitlist'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoxesRoute: typeof BoxesRoute
+  AdminEmailsSentRoute: typeof AdminEmailsSentRoute
+  AdminWaitlistRoute: typeof AdminWaitlistRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +85,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/waitlist': {
+      id: '/admin/waitlist'
+      path: '/admin/waitlist'
+      fullPath: '/admin/waitlist'
+      preLoaderRoute: typeof AdminWaitlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/emails-sent': {
+      id: '/admin/emails-sent'
+      path: '/admin/emails-sent'
+      fullPath: '/admin/emails-sent'
+      preLoaderRoute: typeof AdminEmailsSentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoxesRoute: BoxesRoute,
+  AdminEmailsSentRoute: AdminEmailsSentRoute,
+  AdminWaitlistRoute: AdminWaitlistRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

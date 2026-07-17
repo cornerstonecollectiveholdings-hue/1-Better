@@ -43,6 +43,21 @@ const submitWaitlist = createServerFn({ method: "POST" })
     });
 
     await writeFile(filePath, JSON.stringify(entries, null, 2), "utf-8");
+
+    // ── Also append to pending-emails for welcome email sending ──
+    const pendingPath = path.join(dir, "pending-emails.json");
+    let pending: { name: string; email: string; joinedAt: string }[] = [];
+    if (existsSync(pendingPath)) {
+      const raw = await readFile(pendingPath, "utf-8");
+      pending = JSON.parse(raw);
+    }
+    pending.push({
+      name: data.name,
+      email: data.email,
+      joinedAt: new Date().toISOString(),
+    });
+    await writeFile(pendingPath, JSON.stringify(pending, null, 2), "utf-8");
+
     return { success: true, message: "You're on the list! 🎉" };
   });
 
