@@ -360,6 +360,7 @@ function Home() {
             <a href="#" className="hover:text-brand-terracotta transition-colors">Instagram</a>
             <a href="#" className="hover:text-brand-terracotta transition-colors">TikTok</a>
             <a href="#" className="hover:text-brand-terracotta transition-colors">Podcast</a>
+            <a href="/admin/waitlist" className="text-xs text-brand-stone/60 hover:text-brand-stone transition-colors lowercase">admin</a>
           </div>
         </div>
       </footer>
