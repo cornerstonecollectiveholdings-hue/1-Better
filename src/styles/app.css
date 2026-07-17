@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-brand-terracotta: #C47354;
+  --color-brand-forest: #3D5A4B;
+  --color-brand-amber: #E8B44F;
+  --color-brand-cream: #FAF7F2;
+  --color-brand-charcoal: #3D3835;
+  --color-brand-stone: #8C8580;
+
+  --font-heading: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+
+  --radius-soft: 8px;
+  --radius-medium: 12px;
+  --radius-round: 9999px;
+
+  --shadow-card: 0 2px 12px rgba(61, 56, 53, 0.08);
+  --shadow-elevated: 0 8px 30px rgba(61, 56, 53, 0.12);
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-brand-cream text-brand-charcoal antialiased font-body;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+}
+
+/* Gradient utility */
+.gradient-warm {
+  background: linear-gradient(135deg, #C47354 0%, #E8B44F 100%);
+}

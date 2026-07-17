@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.run/
+data/
+*.log
+.env
+.vercel/
